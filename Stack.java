@@ -29,6 +29,11 @@ public class Stack {
 			return returnVal;
 		}
 	}
+	public boolean isEmpty() {
+		if (numberOfDigits > 0) {
+			return false;
+		}
+	}
 	//doubly linked list
 	private class Node  {
 		private int date;
