@@ -1,30 +1,33 @@
-public class Stack {
+public class <T> Stack {
+	//T stands for type 
 	private Node firstNode;
 	private Node lastNode;
 	private int numberOfDigits = 0;
 	public Stack () {
 
 	}
-	public void push(int data) {
+	public boolean push(T data) {
 		if (firstNode == null) {
 			Node firstNode = new Node(null, data, null);
 			lastNode = firstNode;
 			numberOfDigits ++;
+			return true;
 		}
 		else {
-			Node newNode = new Node(lastNode, digit, null);
+			Node newNode = new Node(lastNode, data, null);
 			lastNode.next = newNode;
 			lastNode = newNode;
 			numberOfDigits ++;
+			return true;
 		}
-		this.data = data;
+		return false;		
 	}
-	public int pop() {
+	public T pop() {
 		if(firstNode == null) {
-			return -1;
+			return null;
 		}
 		else {
-			int returnVal = lastNode.data;
+			T returnVal = lastNode.data;
 			lastNode = lastNode.previous;
 			numberOfDigits++;
 			return returnVal;
@@ -36,12 +39,12 @@ public class Stack {
 		}
 	}
 	//doubly linked list
-	private class Node  {
-		private int date;
+	private <T> class Node  {
+		private T date;
 		private Node next;
 		private Node previous;
 
-		private Node (Node previousNode, int aData, Node nextNode) {
+		private Node (Node previousNode, T aData, Node nextNode) {
 			previous = previousNode;
 			data = aData;
 			next= nextNode;
