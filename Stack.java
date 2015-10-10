@@ -26,6 +26,7 @@ public class Stack {
 		else {
 			int returnVal = lastNode.data;
 			lastNode = lastNode.previous;
+			numberOfDigits++;
 			return returnVal;
 		}
 	}
