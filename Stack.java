@@ -22,15 +22,13 @@ public class Stack <T>{
 		}		
 	}
 	public T pop() {
-		if(firstNode == null) {
-			return null;
-		}
-		else {
+		if(firstNode != null) {
 			T returnVal = lastNode.data;
 			lastNode = lastNode.previous;
 			numberOfDigits++;
 			return returnVal;
 		}
+		return null;
 	}
 
 	public boolean isEmpty() {
