@@ -7,15 +7,27 @@ public class DoublyLinkedList {
 	}
 	private void sortedAdd(int data) {
 		if(firstNode == null) {
-			firstNode = new Node(null,data,lastNode);
+			firstNode = new Node(null, data, lastNode);
+		} else {
+			Node currNode = firstNode;
+			for(int i = 0; i < numberOfItems; i ++) {
+				if(data > currNode.data) {
+					currNode= currNode.nextNode;
+				} else {
+					Node tempNode = new Node(currNode.previousNode , data, currNode);
+					Node pastNode = currNode.previousNode;
+					pastNode.nextNode = tempNode;
+					currNode.previousNode = tempNode;
+				}
+			}
 		}
 	}
 	public void add(int data) {
 		sortedAdd(data);
 	}
 
-	public void get(){
-
+	public void get(int data){
+		
 	}
 	public void getNumberOfItems () {
 		numberOfItems ++;
