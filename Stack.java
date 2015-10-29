@@ -1,4 +1,4 @@
-public class <T> Stack {
+public class Stack <T>{
 	//T stands for type 
 	private Node firstNode;
 	private Node lastNode;
@@ -19,8 +19,7 @@ public class <T> Stack {
 			lastNode = newNode;
 			numberOfDigits ++;
 			return true;
-		}
-		return false;		
+		}		
 	}
 	public T pop() {
 		if(firstNode == null) {
@@ -33,14 +32,16 @@ public class <T> Stack {
 			return returnVal;
 		}
 	}
+
 	public boolean isEmpty() {
 		if (numberOfDigits > 0) {
 			return false;
 		}
+		return true;
 	}
 	//doubly linked list
-	private <T> class Node  {
-		private T date;
+	private class Node {
+		private T data;
 		private Node next;
 		private Node previous;
 

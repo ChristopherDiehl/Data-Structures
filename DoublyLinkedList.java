@@ -1,7 +1,7 @@
-public class DoublyLinkedList { 
+public class DoublyLinkedList <T>{ 
 	private Node firstNode;
 	private Node lastNode;
-	private int getNumberOfItems = 0;
+	private int numberOfItems = 0;
 	public DoublyLinkedList () {
 
 	}
@@ -16,7 +16,7 @@ public class DoublyLinkedList {
 
 	}
 	public void getNumberOfItems () {
-		numberOfItems;
+		numberOfItems ++;
 	}
 
  	public boolean delete (int anObject) {
@@ -26,9 +26,9 @@ public class DoublyLinkedList {
 	private class Node {
 		Node nextNode;
 		Node previousNode;
-		Object data;
+		T data;
 
-		private Node(Node previousNode, Object aData, Node nextNode) {
+		private Node(Node previousNode, T aData, Node nextNode) {
 			this.nextNode = nextNode;
 			this.previousNode = previousNode;
 			this.data = aData;
