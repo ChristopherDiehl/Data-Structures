@@ -26,8 +26,36 @@ public class DoublyLinkedList {
 		sortedAdd(data);
 	}
 
-	public void get(int data){
-		
+	public boolean remove (int data){
+		int mean = firstNode.data + lastNode.data;
+		mean = mean/2;
+		boolean valueFound = false;
+		if( data > mean) {
+			Node currNode =  lastNode;
+			while (currNode.data >=  data) {
+				if(currNode.data == data) {
+					Node prevNode = currNode.previousNode;
+					prevNode.nextNode = currNode.nextNode;
+					Node nextNode = currNode.nextNode;
+					nextNode.previousNode = prevNode;
+					valueFound = true;
+				}
+				currNode = currNode.previousNode;
+			}
+		} else {
+			Node currNode =  firstNode;
+			while (currNode.data >=  data) {
+				if(currNode.data == data) {
+					Node prevNode = currNode.previousNode;
+					prevNode.nextNode = currNode.nextNode;
+					Node nextNode = currNode.nextNode;
+					nextNode.previousNode = prevNode;
+					valueFound = true;
+				}
+				currNode = currNode.nextNode;
+			}
+		}
+		return valueFound;
 	}
 	public void getNumberOfItems () {
 		numberOfItems ++;
