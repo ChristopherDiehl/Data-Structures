@@ -8,29 +8,41 @@ public class DoublyLinkedList {
 	private void sortedAdd(int data) {
 		if(firstNode == null) {
 			firstNode = new Node(null, data, lastNode);
+			lastNode = firstNode;
 		} else {
 			int mean = firstNode.data + lastNode.data;
 			mean = mean/2;
 			Node currNode = null;
 			if(data < mean){
 				currNode = firstNode;
-				while(data != currNode.data) {
+				while(currNode != null) {
+					if(currNode.data > data && (currNode.previousNode.data < data || currNode.previousNode == null)){
+						Node tempNode = new Node(currNode.previousNode, data, currNode);
+						if(currNode == firstNode) {
+							firstNode.previousNode = tempNode;
+							firstNode = tempNode;
+						} else {
+							currNode.previousNode.nextNode = tempNode;
+							currNode.previousNode = tempNode;
+						}
+					}
 					currNode = currNode.nextNode;	
 				} 
-				currNode = currNode.previousNode;
+				//currNode = currNode.previousNode;
 			}
-			if (data > mean) {
+			else if (data >= mean) {
 				currNode = lastNode;
-				while (data != currNode.data) {
+				while (data != currNode.data && currNode.previousNode != null) {
 					currNode = currNode.previousNode;
 				}
-				currNode= currNode.nextNode;
+				//currNode= currNode.nextNode;
 			}
 			Node tempNode = new Node(currNode.previousNode , data, currNode);
 			Node pastNode = currNode.previousNode;
 			pastNode.nextNode = tempNode;
 			currNode.previousNode = tempNode;	
 			numberOfItems++;
+
 		}
 	}
 	public void add(int data) {
