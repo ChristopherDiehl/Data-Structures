@@ -9,24 +9,46 @@ public class DoublyLinkedList {
 		if(firstNode == null) {
 			firstNode = new Node(null, data, lastNode);
 		} else {
-			Node currNode = firstNode;
-			for(int i = 0; i < numberOfItems; i ++) {
-				if(data > currNode.data) {
-					currNode= currNode.nextNode;
-				} else {
-					Node tempNode = new Node(currNode.previousNode , data, currNode);
-					Node pastNode = currNode.previousNode;
-					pastNode.nextNode = tempNode;
-					currNode.previousNode = tempNode;
-				}
+			int mean = firstNode.data + lastNode.data;
+			mean = mean/2;
+			Node currNode = null;
+			if(data < mean){
+				currNode = firstNode;
+				while(data != currNode.data) {
+					currNode = currNode.nextNode;	
+				} 
+				currNode = currNode.previousNode;
 			}
+			if (data > mean) {
+				currNode = lastNode;
+				while (data != currNode.data) {
+					currNode = currNode.previousNode;
+				}
+				currNode= currNode.nextNode;
+			}
+			Node tempNode = new Node(currNode.previousNode , data, currNode);
+			Node pastNode = currNode.previousNode;
+			pastNode.nextNode = tempNode;
+			currNode.previousNode = tempNode;	
+			numberOfItems++;
 		}
 	}
 	public void add(int data) {
 		sortedAdd(data);
 	}
-
-	public boolean remove (int data){
+	public int [] getList() {
+		if(numberOfItems != 0) {
+			int [] data = new int [numberOfItems];
+			Node currNode = firstNode;
+			for(int i = 0; i < numberOfItems -1; i ++) {
+				data[i] = currNode.data;
+				currNode = currNode.nextNode;
+			}
+			return data;
+		}
+		return null;
+	}
+	public boolean delete (int data){
 		int mean = firstNode.data + lastNode.data;
 		mean = mean/2;
 		boolean valueFound = false;
@@ -61,9 +83,7 @@ public class DoublyLinkedList {
 		numberOfItems ++;
 	}
 
- 	public boolean delete (int anObject) {
-		return false;
-	}
+
 
 	private class Node {
 		Node nextNode;
