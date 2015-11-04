@@ -6,37 +6,56 @@ public class DoublyLinkedList {
 		
 	}
 	private void sortedAdd(int data) {
+		Node currNode = null;
 		if(firstNode == null) {
 			firstNode = new Node(null, data, lastNode);
 			lastNode = firstNode;
 		} else {
 			int mean = firstNode.data + lastNode.data;
 			mean = mean/2;
-			Node currNode = null;
+
 			if(data < mean){
 				currNode = firstNode;
 				while(currNode != null) {
-					if(currNode.data > data && (currNode.previousNode.data < data || currNode.previousNode == null)){
-						Node tempNode = new Node(currNode.previousNode, data, currNode);
-						if(currNode == firstNode) {
+					if(currNode.data > data ){
+						if(currNode.previousNode == null){
+							Node tempNode = new Node(null, data, firstNode);
 							firstNode.previousNode = tempNode;
 							firstNode = tempNode;
+							break;
 						} else {
+							Node tempNode = new Node(currNode.previousNode, data, currNode);
 							currNode.previousNode.nextNode = tempNode;
 							currNode.previousNode = tempNode;
+							break;
 						}
-					}
+					  }
 					currNode = currNode.nextNode;	
+					}
+					
 				} 
 				//currNode = currNode.previousNode;
-			}
-			else if (data >= mean) {
-				currNode = lastNode;
-				while (data != currNode.data && currNode.previousNode != null) {
+			 else {
+				 currNode = lastNode;
+				while(currNode != null) {
+					if (currNode.data < data) {
+						if(currNode.nextNode == null) {
+							Node tempNode = new Node (lastNode, data, null);
+							lastNode.nextNode = tempNode;
+							lastNode = tempNode;
+							break;
+						} else {
+							Node tempNode = new Node (currNode, data, currNode.nextNode);
+							currNode.nextNode.previousNode = tempNode;
+							currNode.nextNode = tempNode;
+							break;
+							
+						}
+					}
 					currNode = currNode.previousNode;
 				}
-				//currNode= currNode.nextNode;
 			}
+			
 			Node tempNode = new Node(currNode.previousNode , data, currNode);
 			Node pastNode = currNode.previousNode;
 			pastNode.nextNode = tempNode;
@@ -48,9 +67,21 @@ public class DoublyLinkedList {
 	public void add(int data) {
 		sortedAdd(data);
 	}
-	public int [] getList() {
+	public int [] getArray() {
 		if(numberOfItems != 0) {
 			int [] data = new int [numberOfItems];
+			Node currNode = firstNode;
+			for(int i = 0; i < numberOfItems -1; i ++) {
+				data[i] = currNode.data;
+				currNode = currNode.nextNode;
+			}
+			return data;
+		}
+		return null;
+	}
+	public String getString() {
+		if(numberOfItems != 0) {
+			StringBuilder str = new StringBuilder();
 			Node currNode = firstNode;
 			for(int i = 0; i < numberOfItems -1; i ++) {
 				data[i] = currNode.data;
