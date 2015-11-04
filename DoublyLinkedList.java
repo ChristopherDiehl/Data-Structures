@@ -121,7 +121,7 @@ public class DoublyLinkedList {
 		}
 		return valueFound;
 	}
-	public void getNumberOfItems () {
+	public void size () {
 		numberOfItems ++;
 	}
 
