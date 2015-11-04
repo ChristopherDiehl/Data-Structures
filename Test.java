@@ -6,11 +6,11 @@ public class Test {
 		DoublyLinkedList dll = new DoublyLinkedList ();
 		dll.add(5);
 		dll.add(4);
-		dll.add(3);
-		dll.add(2);
+		dll.add(7);
+		dll.add(6);
 		dll.add(1);
 		dll.add(0);
-		System.out.println(dll.getList());
+		System.out.println(dll.getString());
 		
 	}
 

@@ -10,6 +10,7 @@ public class DoublyLinkedList {
 		if(firstNode == null) {
 			firstNode = new Node(null, data, lastNode);
 			lastNode = firstNode;
+			numberOfItems ++;
 		} else {
 			int mean = firstNode.data + lastNode.data;
 			mean = mean/2;
@@ -22,11 +23,13 @@ public class DoublyLinkedList {
 							Node tempNode = new Node(null, data, firstNode);
 							firstNode.previousNode = tempNode;
 							firstNode = tempNode;
+							numberOfItems++;
 							break;
 						} else {
 							Node tempNode = new Node(currNode.previousNode, data, currNode);
 							currNode.previousNode.nextNode = tempNode;
 							currNode.previousNode = tempNode;
+							numberOfItems++;
 							break;
 						}
 					  }
@@ -43,11 +46,13 @@ public class DoublyLinkedList {
 							Node tempNode = new Node (lastNode, data, null);
 							lastNode.nextNode = tempNode;
 							lastNode = tempNode;
+							numberOfItems++;
 							break;
 						} else {
 							Node tempNode = new Node (currNode, data, currNode.nextNode);
 							currNode.nextNode.previousNode = tempNode;
 							currNode.nextNode = tempNode;
+							numberOfItems++;
 							break;
 							
 						}
@@ -56,12 +61,6 @@ public class DoublyLinkedList {
 				}
 			}
 			
-			Node tempNode = new Node(currNode.previousNode , data, currNode);
-			Node pastNode = currNode.previousNode;
-			pastNode.nextNode = tempNode;
-			currNode.previousNode = tempNode;	
-			numberOfItems++;
-
 		}
 	}
 	public void add(int data) {
@@ -83,11 +82,11 @@ public class DoublyLinkedList {
 		if(numberOfItems != 0) {
 			StringBuilder str = new StringBuilder();
 			Node currNode = firstNode;
-			for(int i = 0; i < numberOfItems -1; i ++) {
-				data[i] = currNode.data;
+			for(int i = 0; i < numberOfItems ; i ++) {
+				str.append(currNode.data);
 				currNode = currNode.nextNode;
 			}
-			return data;
+			return str.toString();
 		}
 		return null;
 	}
