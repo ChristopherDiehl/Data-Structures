@@ -70,7 +70,7 @@ public class DoublyLinkedList {
 		if(numberOfItems != 0) {
 			int [] data = new int [numberOfItems];
 			Node currNode = firstNode;
-			for(int i = 0; i < numberOfItems -1; i ++) {
+			for(int i = 0; i < numberOfItems ; i ++) {
 				data[i] = currNode.data;
 				currNode = currNode.nextNode;
 			}
