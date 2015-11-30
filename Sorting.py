@@ -32,10 +32,12 @@ class Sorting:
 					sorted = False
 			length = length - 1
 		print array
+	def insertionsort(self, array):
+
 
 sor = Sorting()
-#array = [random.randint(0,1000) for r in xrange (1000)]
-#sor.selectionSort(array)
+array = [random.randint(0,1000) for r in xrange (1000)]
+sor.selectionSort(array)
 array = [random.randint(0,1000) for r in xrange (1000)]
 sor.bubbleSort(array)
 
