@@ -20,16 +20,23 @@ class Sorting:
 		print array
 
 	def bubbleSort(self, array) :
-		for index in range (1, len(array) -1):
-			if array[index-1] > array [index]
-				temp = array [index]
-				array[index] = array[index-1]
-				array[index-1] = temp
+		sorted = False
+		length = len(array) -1
+		while not sorted:
+			sorted = True
+			for index in range (length):
+				if array[index] > array [index+1]:
+					temp = array [index]
+					array[index] = array[index +1]
+					array[index +1] = temp
+					sorted = False
+			length = length - 1
 		print array
 
-
+sor = Sorting()
+#array = [random.randint(0,1000) for r in xrange (1000)]
+#sor.selectionSort(array)
 array = [random.randint(0,1000) for r in xrange (1000)]
-sor.selectionSort(array)
 sor.bubbleSort(array)
 
 
