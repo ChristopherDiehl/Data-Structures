@@ -5,17 +5,16 @@ class Sorting:
 	"""A Class to learn Python and some sorting"""
 
 	def selectionSort(self, array):
-		val = array[0]
-		for index in range (1,len(array)):
-			indexVal = array[index]
-			smallestIntVal = index
-			for secondInd in range (index+1, len(array)):
-				if array[secondInd] < array[index]:
-					smallestIntVal = secondInd
-					index = secondInd
 
-			array[index] = array[smallestIntVal]
-			array[smallestIntVal] = indexVal
+		for index in range (len(array) -1,0,-1):
+			minPos = 0
+			for secondInd in range (1, index +1):
+				if array[secondInd] < array[minPos]:
+					minPos = secondInd
+
+			tempVal = array[index]
+			array[index] = array[minPos]
+			array[minPos] = tempVal
 	
 		print array
 
@@ -33,13 +32,14 @@ class Sorting:
 			length = length - 1
 		print array
 	def insertionsort(self, array):
+		length = len(array)
 
 
 sor = Sorting()
 array = [random.randint(0,1000) for r in xrange (1000)]
 sor.selectionSort(array)
-array = [random.randint(0,1000) for r in xrange (1000)]
-sor.bubbleSort(array)
+#array = [random.randint(0,1000) for r in xrange (1000)]
+#sor.bubbleSort(array)
 
 
 
