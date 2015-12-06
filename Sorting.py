@@ -34,6 +34,43 @@ class Sorting:
 	def insertionsort(self, array):
 		length = len(array)
 
+	def quickSort(dirtyList, startPoint, endPoint):
+		if startPoint < endPoint:
+			splitArray = partition(dirtyList,startPoint,endPoint)
+			quickSort (dirtyList,startPoint,splitArray-1)
+			quickSort (dirtyList,splitArray +1,end)
+		else :
+			return dirtyList
+
+	def partition(dirtyList,start,end):
+		pivot = list[end]
+		leftPoint = start -1
+		rightPoint = end
+		done =0
+		while not done:
+			while not done:
+				leftPoint = leftPoint +1
+
+				if leftPoint == rightPoint:
+					done = 1
+					break
+
+				if dirtyList [leftPoint] > pivot:
+					dirtyList[rightPoint] = dirtyList[leftPoint]
+					break
+			while not done:
+				rightPoint = rightPoint -1
+
+				if rightPoint == leftPoint:
+					done = 1
+					break
+
+				if dirtyList[rightPoint] < pivot:
+					dirtyList[leftPoint]=dirtyList[rightPoint]
+					break
+		dirtyList[rightPoint] = pivot
+		return rightPoint
+
 
 sor = Sorting()
 array = [random.randint(0,1000) for r in xrange (1000)]

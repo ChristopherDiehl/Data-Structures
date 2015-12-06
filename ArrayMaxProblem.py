@@ -11,23 +11,23 @@ class Stack:
 
 	def __init__(self):
 
-	def peek(self):
-		try:
-			returnval = list.pop()
-			list.append(returnval)
-			return returnval
-		except:
-			print Unexpected error
+		def peek(self):
+			try:
+				returnval = list.pop()
+				list.append(returnval)
+				return returnval
+			except:
+				print 'Unexpected error'
 
-	def pop(self):
-		return list.pop()
-	def append(self, valueToAppend):
-		list.append(valueToAppend)
+		def pop(self):
+			return list.pop()
+		def append(self, valueToAppend):
+			list.append(valueToAppend)
 
 def quickSort(dirtyList, startPoint, endPoint):
-	if start < end:
-		splitArray = partition(dirtyList,start,end)
-		quickSort (dirtyList,start,splitArray-1)
+	if startPoint < endPoint:
+		splitArray = partition(dirtyList,startPoint,endPoint)
+		quickSort (dirtyList,startPoint,splitArray-1)
 		quickSort (dirtyList,splitArray +1,end)
 	else :
 		return dirtyList
@@ -64,8 +64,8 @@ def partition(dirtyList,start,end):
 a = [0,5,12,1,3,2]
 b = [8,9,11,13,5,2]
 stack = Stack ()
-sortedB = quickSort(b)
+sortedB = quickSort(b,0,len(b)-1)
 
-for i in range len(b) :
+for i in range(len(b)) :
 	print sortedB[i]
 	stack.append(sortedB[i])
