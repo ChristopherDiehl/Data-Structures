@@ -67,4 +67,5 @@ stack = Stack ()
 sortedB = quickSort(b)
 
 for i in range len(b) :
+	print sortedB[i]
 	stack.append(sortedB[i])
