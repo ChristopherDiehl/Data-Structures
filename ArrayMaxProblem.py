@@ -24,5 +24,47 @@ class Stack:
 	def append(self, valueToAppend):
 		list.append(valueToAppend)
 
+def quickSort(dirtyList, startPoint, endPoint):
+	if start < end:
+		splitArray = partition(dirtyList,start,end)
+		quickSort (dirtyList,start,splitArray-1)
+		quickSort (dirtyList,splitArray +1,end)
+	else :
+		return dirtyList
 
+def partition(dirtyList,start,end):
+	pivot = list[end]
+	leftPoint = start -1
+	rightPoint = end
+	done =0
+	while not done:
+		while not done:
+			leftPoint = leftPoint +1
 
+			if leftPoint == rightPoint:
+				done = 1
+				break
+
+			if dirtyList [leftPoint] > pivot:
+				dirtyList[rightPoint] = dirtyList[leftPoint]
+				break
+		while not done:
+			rightPoint = rightPoint -1
+
+			if rightPoint == leftPoint:
+				done = 1
+				break
+
+			if dirtyList[rightPoint] < pivot:
+				dirtyList[leftPoint]=dirtyList[rightPoint]
+				break
+	dirtyList[rightPoint] = pivot
+	return rightPoint
+
+a = [0,5,12,1,3,2]
+b = [8,9,11,13,5,2]
+stack = Stack ()
+sortedB = quickSort(b)
+
+for i in range len(b) :
+	stack.append(sortedB[i])
