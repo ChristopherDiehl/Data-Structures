@@ -19,7 +19,19 @@ public class Queue <T> {
 			lastNode = firstNode;
 			size = 1;
 		} else {
-			
+			Node tempNode = new Node(lastNode, data, null);
+			lastNode.nextNode = tempNode;
+			lastNode = tempNode;
+			size++;
+		}
+	}
+	public T unqueue(){
+		if(size == 0) 
+			return null;
+		else {
+			T data = lastNode.data;
+			lastNode = lastNode.previousNode;
+			return data;
 		}
 	}
 	
