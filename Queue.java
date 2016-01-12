@@ -9,9 +9,7 @@ public class Queue <T> {
 		size = 0;
 	}
 	public Queue (T data) {
-		firstNode = new Node(null,data,lastNode);
-		lastNode = firstNode;
-		size = 1;
+		queue(data);
 	}
 	public void queue(T data) {
 		if(firstNode == null) {
@@ -26,13 +24,16 @@ public class Queue <T> {
 		}
 	}
 	public T unqueue(){
-		if(size == 0) 
-			return null;
-		else {
+		if(size != 0){
 			T data = lastNode.data;
 			lastNode = lastNode.previousNode;
+			size--;
 			return data;
 		}
+		return null;
+	}
+	public int size(){
+		return size;
 	}
 	
 	private class Node {

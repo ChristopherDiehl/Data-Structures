@@ -4,11 +4,15 @@ public class Stack <T>{
 	private Node lastNode;
 	private int numberOfDigits = 0;
 	public Stack () {
-
+		firstNode = null;
+		lastNode = null;
+	}
+	public Stack(T data){
+		push(data);
 	}
 	public boolean push(T data) {
 		if (firstNode == null) {
-			Node firstNode = new Node(null, data, null);
+			firstNode = new Node(null, data, lastNode);
 			lastNode = firstNode;
 			numberOfDigits ++;
 			return true;
@@ -37,7 +41,6 @@ public class Stack <T>{
 		}
 		return true;
 	}
-	//doubly linked list
 	private class Node {
 		private T data;
 		private Node next;
