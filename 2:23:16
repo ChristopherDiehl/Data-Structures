@@ -1,0 +1,95 @@
+2/23/16
+
+Exam 1:
+-Study lecture notes
+-No authoring of code
+-Fix code
+	-what is different about the code
+	-looking to undestand code
+	-Good practice = debugging
+Makefile:
+Reasonable way to do things
+
+gcc -o targetname main.c libsl.a
+
+gcc-o targetname main.c -L. -lsl =>go to directory ".", current directory and use library named libsla
+
+/* DONT DO THIS 
+* Fails if a dependency isn't available
+*/
+
+all: clean main.c 
+...
+clean:
+	rm *.o mainname ..
+
+/*DO THIS INSTEAD*/
+
+all: main.c
+
+rebuild: clean all
+
+
+clean: rm *.o mainname
+
+*Example MakeFile in Notes 214Examples*
+
+ - MAKE -
+-Only rebuilds what it needs to
+-Dynamically linked library
+
+ -CHMOD-
+
+-Changes file permissions
+-directorys are fancy files
+Permissions:
+wrx 
+
+Target Range
+a = everyone
+u = user
+o = other
+g = group
+
+EX: chmod <range><+/-><permission><file>
+chmod a -r secret.txt  
+	- not even root can read
+chmod a-w dontdelete
+	- no write permission
+CAN USE OCTAL
+('u')
+0 = not allowed
+1 = allowed
+owner group all (000)
+1st 0 2nd 0 3rd 0
+rwx   rwz    rwz
+000	  000    000
+
+101   101    101
+5     5      5
+
+chmod 555 dontdelete
+
+chmod 777 file
+o  g  a
+7  7  7
+
+chown
+-change ownership of a file 
+-you can only chmod your own files
+ex: chwon diffUser test.c
+
+cat
+more less
+he went over pipes |
+
+./test > output
+-runs test, takes output, dumps to file called output (overwrites file output if already made)
+
+./test >> output
+-appends to file output
+
+kill command
+-terminates a proccess
+-sends signal to process to terminate
+-
