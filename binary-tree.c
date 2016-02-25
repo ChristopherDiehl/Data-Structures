@@ -124,8 +124,11 @@ Node * BTreeGetMaxNode(Node * head) {
 }
 
 
-
-
+/*Gets the max in the binary tree */
+int BTreeGetMax(BinaryTreePtr btp) {
+	Node maxNode = BTreeGetMaxNode(btp->head);
+	return maxNode->value;
+}
 
 
 
