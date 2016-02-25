@@ -8,7 +8,7 @@ Stack * SCreate()
  	stack->tail = 0;
  	return stack;
  }
-void StackDelete()
+void StackDestroy(Stack * stack)
  {
   while(stack->tail != 0){
     Node * tempNode = stack->tail->prev;

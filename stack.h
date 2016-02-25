@@ -31,7 +31,8 @@
  /*Creates the stack, initializes everything to 0 */
 
  Stack * SCreate();
-
+ /*destroys the stack and all the values in the stack */
+ void StackDestroy(Stack * stack);
  /*Pops the last data inserted
   *frees node data was stored in
   */
