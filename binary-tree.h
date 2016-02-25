@@ -68,5 +68,5 @@
   /*returns the max value in the btp tree) */
   int BTreeGetMax (BinaryTreePtr btp);
   /*returns node that holds the max value) */
-  Node * BTreeGetMaxNode (Node * head);
+  Node * BTreeGetMaxNode (Node * he
 #endif
