@@ -8,7 +8,15 @@ Stack * SCreate()
  	stack->tail = 0;
  	return stack;
  }
-
+void StackDelete()
+ {
+  while(stack->tail != 0){
+    Node * tempNode = stack->tail->prev;
+    free(stack->tail);
+    stack->tail = tempNode;
+  }
+  free(stack);
+ }
  /*Returns last node data
   *if fails, returns 0
   */

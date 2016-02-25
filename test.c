@@ -13,7 +13,10 @@ int main() {
 		i++;
 	}
 	while (isEmpty(stack )!= 0){
-		printf("Data : %d",*(int * )pop(stack));
+		int * temp = pop(stack);
+		printf("Data : %d",*temp);
+		free(temp);
 	}
+	StackDelete(stack);
 	return 0;
 }
