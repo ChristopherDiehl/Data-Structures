@@ -34,28 +34,53 @@ int main(int argc, char * argv [])
 		printf("Not unique\n");
 	}
 
+
+
 	if(argc == 3)
 	{
-		if(isPermutation(argv[1], argv[2]))
+		if(isPermutation(argv[1], argv[2]) == 1)
 		{
 			printf("Is a permutation\n");
+		} else
+		{
+			printf("not a permutation \n");
 		}
 	}
 
 	return 0;
 }
 
-int isPermutation(char * potential_perm, char * source)
+//kind of same thought process as second is unique
+//worst case goes through each string twice, however needs extra 128*4 (depends on architecture) bits of memory for int bucket
+int isPermutation(char * a, char * b)
 {
-	return 0;
-/*
 
-	int pot_len = strlen(potential_perm);
-	int source_len = strlen(source);
+
+	int a_len = strlen(a);
+	int b_len = strlen(b);
 	int i = 0;
-	if(pot_len )
-	for(i =0; i < source_len; i)
-*/
+	if(b_len != a_len)
+		return -1;
+
+	int char_bucket [128]= {};
+	for(i =0; i < b_len; i++)
+	{
+		char_bucket[b[i]-'0']++;
+	}
+
+	for(i = 0; i < a_len; i++)
+	{
+		if(char_bucket[a[i]-'0'] > 0)
+		{
+			char_bucket[a[i]-'0']--;
+		} else
+		{
+			return -1;
+		}
+	}
+
+	return 1;
+
 }
 
 int isUnique(char * uniqueString)
